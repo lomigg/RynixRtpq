@@ -1,0 +1,57 @@
+name: RynixRtpq
+version: '${project.version}'
+main: com.rynix.rtpq.RynixRtpqPlugin
+# api-version 1.13 = Support ALL MC versions from 1.13 to 1.21.5+ (1.8-1.12 also works without api-version check)
+# Lower api-version = wider compatibility, we use reflection for newer APIs
+api-version: '1.16'
+author: RinZz
+authors: [RinZz, Rynix Studio]
+description: Duo RTP Queue - 2 players same location - Java 21-25 & All MC Versions 1.8-1.21.5+ - GUI - Folia Supported | Author RinZz
+website: https://rynix.studio
+folia-supported: true
+prefix: RynixRtpq
+
+# Java Support: 21, 22, 23, 24, 25 (LTS + Latest)
+# Minecraft Support: 1.8, 1.12, 1.16, 1.17, 1.18, 1.19, 1.20, 1.20.5, 1.20.6, 1.21, 1.21.1, 1.21.4, 1.21.5+
+
+commands:
+  rtpq:
+    description: Open Duo Queue GUI - Config has GUI - Java 21-25 & All MC Versions
+    usage: /rtpq
+    aliases: [rtp, randomtp, wild, rtpduo, mchashqueue, rynixrtpq]
+  rtpqueue:
+    description: Open Duo Queue GUI + Admin - Config has GUI - Author RinZz
+    usage: /rtpqueue <gui|reload|clear|list>
+    aliases: [rtpqadmin, rrtp, rtpqgui]
+
+permissions:
+  rynixrtpq.use:
+    default: true
+  rynixrtpq.duo:
+    default: true
+  rynixrtpq.gui:
+    default: true
+  rynixrtpq.bypass.cooldown:
+    default: op
+  rynixrtpq.bypass.queue:
+    default: op
+  rynixrtpq.admin:
+    default: op
+  rynixrtpq.admin.*:
+    default: op
+    children:
+      rynixrtpq.admin: true
+      rynixrtpq.bypass.cooldown: true
+      rynixrtpq.bypass.queue: true
+  rtpqueue.use:
+    default: true
+  rtpqueue.gui:
+    default: true
+  rtpqueue.admin:
+    default: op
+  rtpq.use:
+    default: true
+  rtpq.duo:
+    default: true
+  mchashqueue.use:
+    default: true
