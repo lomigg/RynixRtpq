@@ -1,23 +1,22 @@
 #============
-# RynixRtpq - Duo Queue - Converted from McPlugin format
+# RynixRtpq - Duo Queue Plugin
 # Author: RinZz | Rynix Studio | Folia Supported | Optimized
+# Version 2.2.0 - Pure RynixRtpq
 # If you find a bug or need help, please contact RinZz
 # Discord: https://discord.gg/RynixStudio (RinZz)
-# A place to share knowledge and improve the plugin
-# Original format by McPlugin - Remake by RinZz
 #============
 
 # ██████╗ ██╗   ██╗███╗   ██╗██╗██╗  ██╗ - RynixRtpq Duo
 # ██╔══██╗╚██╗ ██╔╝████╗  ██║██║╚██╗██╔╝ - 2 Players 1 Location
 # ██████╔╝ ╚████╔╝ ██╔██╗ ██║██║ ╚███╔╝ - /rtpq & /rtpqueue have GUI
 # ██╔══██╗  ╚██╔╝  ██║╚██╗██║██║ ██╔██╗ - Author: RinZz
-# ██║  ██║   ██║   ██║ ╚████║██║██╔╝ ██╗ - Rynix Studio v2.0
+# ██║  ██║   ██║   ██║ ╚████║██║██╔╝ ██╗ - Rynix Studio v2.2
 
 queue:
   hash: "/rtpqueue"
   hash-aliases:
     - "/rtpq"
-    - "/mchashqueue"
+    - "/rynixrtpq"
   invite-time: 60
   invite-cooldown: 60
   world-default: world
@@ -67,7 +66,7 @@ list-world:
       - LAVA
       - FIRE
 
-# RynixRtpq uses this menu for /rtpq and /rtpqueue command - 2 players same spot
+# RynixRtpq GUI - /rtpq and /rtpqueue both open GUI
 menu:
   title: "&8● &bRynixRtpq &8| &dDUO Queue &8●"
   size: 27
@@ -129,7 +128,6 @@ menu:
       - ""
       - "&eClick để mở danh sách!"
     slot: 14
-  # Extra duo info
   duo-info:
     material: MAGENTA_BED
     display_name: "&d&lDUO MODE &7| &a2 Players 1 Spot"
@@ -158,7 +156,6 @@ world-menu:
       - "&7Require: &e{require} người"
       - "&8RynixRtpq Duo by RinZz"
     slot: 0
-    # Will auto generate other worlds 1,2,3...
 
 invite-menu:
   title: "&8● &eInvite Player &7- &fDuo cùng &8●"
@@ -189,7 +186,7 @@ boss-bar:
   enable: true
   title: "&bRynixRtpq &8| &dDUO &7- &f{count} chờ &8| &eCần {need} &8| &a{world}"
   color: RED
-  style: SOLID #SOLID , SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+  style: SOLID
 
 title:
   enable: true
@@ -234,7 +231,6 @@ settings:
   folia-check-on-startup: true
   prefix-raw: "[RynixRtpq] "
 
-# Legacy for our previous config - auto converted
 rtp:
   default-world: world
   invulnerability:
