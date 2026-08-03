@@ -1,0 +1,288 @@
+#============
+# RynixRtpq - Duo Queue - Converted from McPlugin format
+# Author: RinZz | Rynix Studio | Folia Supported | Optimized
+# If you find a bug or need help, please contact RinZz
+# Discord: https://discord.gg/RynixStudio (RinZz)
+# A place to share knowledge and improve the plugin
+# Original format by McPlugin - Remake by RinZz
+#============
+
+# ██████╗ ██╗   ██╗███╗   ██╗██╗██╗  ██╗ - RynixRtpq Duo
+# ██╔══██╗╚██╗ ██╔╝████╗  ██║██║╚██╗██╔╝ - 2 Players 1 Location
+# ██████╔╝ ╚████╔╝ ██╔██╗ ██║██║ ╚███╔╝ - /rtpq & /rtpqueue have GUI
+# ██╔══██╗  ╚██╔╝  ██║╚██╗██║██║ ██╔██╗ - Author: RinZz
+# ██║  ██║   ██║   ██║ ╚████║██║██╔╝ ██╗ - Rynix Studio v2.0
+
+queue:
+  hash: "/rtpqueue"
+  hash-aliases:
+    - "/rtpq"
+    - "/mchashqueue"
+  invite-time: 60
+  invite-cooldown: 60
+  world-default: world
+  damaged-cancel: true
+  delay-between-teleports: 3
+  max-queue-size: 100
+  priority-system: true
+  actionbar-bossbar: true
+
+duo:
+  enabled: true
+  size: 2
+  same-location: true
+  spread-distance: 2
+  solo-after-seconds: 60
+
+list-world:
+  world:
+    require: 2
+    interval: 5
+    safe: true
+    center:
+      x: 0
+      z: 0
+    radius: 500
+    min-radius: 50
+    attempts: 20
+    min-y: 62
+    max-y: 200
+    unsafe-block:
+      - WATER
+      - LAVA
+      - MAGMA_BLOCK
+  world_nether:
+    require: 2
+    interval: 5
+    safe: true
+    center:
+      x: 0
+      z: 0
+    radius: 500
+    min-radius: 50
+    attempts: 15
+    min-y: 32
+    max-y: 120
+    unsafe-block:
+      - LAVA
+      - FIRE
+
+# RynixRtpq uses this menu for /rtpq and /rtpqueue command - 2 players same spot
+menu:
+  title: "&8● &bRynixRtpq &8| &dDUO Queue &8●"
+  size: 27
+  filler:
+    enable: true
+    material: BLACK_STAINED_GLASS_PANE
+  leave:
+    material: RED_STAINED_GLASS_PANE
+    display_name: "&cʟᴇᴀᴠᴇ &7| &7Rời hàng đợi"
+    lore:
+      - ""
+      - "&7Bạn đang ở vị trí &e{position}"
+      - "&7Cần thêm &e{need} &7người để duo"
+      - ""
+      - "&cClick để rời!"
+    slot: 10
+  join:
+    material: GREEN_STAINED_GLASS_PANE
+    display_name: "&aᴊᴏɪɴ &7| &aTham gia Duo"
+    lore:
+      - ""
+      - "&7Nhấn để tham gia hàng đợi"
+      - "&72 người sẽ tele cùng chỗ"
+      - "&7World: &e{world}"
+      - ""
+      - "&aClick để tham gia!"
+      - "&8RynixRtpq by RinZz"
+    slot: 16
+  world:
+    material: GRASS_BLOCK
+    display_name: "&aᴡᴏʀʟᴅ &7| &f{world}"
+    lore:
+      - "&f{world}"
+      - "&7ᴄʟɪᴄᴋ ᴛᴏ sᴇʟᴇᴄᴛ ᴡᴏʀʟᴅ"
+      - ""
+      - "&7Center: &e{x}, {z}"
+      - "&7Radius: &e{radius}"
+      - "&8RynixRtpq Duo"
+    slot: 12
+  queue:
+    material: BOOK
+    display_name: "&bǫᴜᴇᴜᴇ &7| &e{count} đang đợi"
+    lore:
+      - "&7ᴡᴀɪᴛɪɴɢ ɪɴ ǫᴜᴇᴜᴇ &f{count}"
+      - "&7Cần: &e{need} người để duo"
+      - "&7Delay: &e{interval}s"
+      - ""
+      - "&7Chế độ: &dDUO 2 người 1 chỗ"
+      - "&8Author: &bRinZz"
+    slot: 13
+  invite:
+    material: NETHER_STAR
+    display_name: "&eɪɴᴠɪᴛᴇ &7| &eMời bạn bè duo"
+    lore:
+      - "&7ᴄʟɪᴄᴋ ᴛᴏ ɪɴᴠɪᴛᴇ ᴘʟᴀʏᴇʀ"
+      - ""
+      - "&7Mời bạn bè cùng tele duo"
+      - "&7Cùng tọa độ với bạn"
+      - ""
+      - "&eClick để mở danh sách!"
+    slot: 14
+  # Extra duo info
+  duo-info:
+    material: MAGENTA_BED
+    display_name: "&d&lDUO MODE &7| &a2 Players 1 Spot"
+    lore:
+      - "&7Khi đủ &e{require} người"
+      - "&7Tất cả sẽ tele cùng 1 chỗ"
+      - "&7Spread: &e{spread} blocks"
+      - "&7Hiện tại: &e{count} người"
+      - "&7Cần thêm: &e{need} người"
+    slot: 4
+
+world-menu:
+  title: "&8● &aWorld Selector &8●"
+  size: 27
+  filler:
+    enable: true
+    material: BLACK_STAINED_GLASS_PANE
+  world:
+    select: "world"
+    material: GRASS_BLOCK
+    display_name: "&aᴏᴠᴇʀ ᴡᴏʀʟᴅ &7| &f{world}"
+    lore:
+      - "&fᴄʟɪᴄᴋ ᴛᴏ sᴇʟᴇᴄᴛ ᴛʜɪs ᴡᴏʀʟᴅ"
+      - "&7Center: &e{x}, {z}"
+      - "&7Radius: &e{radius}"
+      - "&7Require: &e{require} người"
+      - "&8RynixRtpq Duo by RinZz"
+    slot: 0
+    # Will auto generate other worlds 1,2,3...
+
+invite-menu:
+  title: "&8● &eInvite Player &7- &fDuo cùng &8●"
+  size: 54
+  filler:
+    enable: true
+    material: BLACK_STAINED_GLASS_PANE
+  next:
+    material: GREEN_STAINED_GLASS_PANE
+    display_name: "&aɴᴇxᴛ &7| &aTrang sau"
+    lore:
+      - "&7ᴄʟɪᴄᴋ ᴛᴏ ɴᴇxᴛ ᴘᴀɢᴇ"
+    slot: 53
+  previous:
+    material: RED_STAINED_GLASS_PANE
+    display_name: "&cᴘʀᴇᴠɪᴏᴜs &7| &cTrang trước"
+    lore:
+      - "&7ᴄʟɪᴄᴋ ᴛᴏ ᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ"
+    slot: 45
+  close:
+    material: BARRIER
+    display_name: "&cĐóng"
+    lore:
+      - "&7Đóng menu"
+    slot: 49
+
+boss-bar:
+  enable: true
+  title: "&bRynixRtpq &8| &dDUO &7- &f{count} chờ &8| &eCần {need} &8| &a{world}"
+  color: RED
+  style: SOLID #SOLID , SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+
+title:
+  enable: true
+  title-teleport: "&b&lMatch &dDuo"
+  subtitle-teleport: "&7Teleporting {player_list} to {world}"
+  time: true
+  title-teleported: "&a&lDUO!"
+  subtitle-teleported: "&7Teleported with {player_list}"
+
+action-bar:
+  enable: true
+  message: "&eTeleport in &f${interval} &8| &dDUO &7- &e{count} người &8| &7Cần {need}"
+
+boardcast:
+  join: "&e{player} &ajoined &b&l{world} &aqueue &8| &7{count}/{require}"
+  found:
+    title: "&b&lFound the match in {world} &8| &dDUO"
+    message: "&e{player_list} &7-> Teleporting together to same location!"
+
+message:
+  join: "✔ &ayou have been added to the queue &8| &bRynixRtpq Duo"
+  join-duo: "✔ &aĐã tham gia queue! &7Vị trí &e{position} &7| Cần thêm &e{need} người để duo! &8| &bRynixRtpq"
+  leave: "‼ &ayou have left the queue"
+  already: "⚠ &cyou have already joined the queue before"
+  reload: "&aRynixRtpq reloaded config &8| &bRinZz &8| &dRynix Studio"
+  location: "🔎 &ccannot find suitable location after {attempts} tries!"
+  world-error: "&ccan not find the world {world}"
+  non-player: "💀 &ethis player could not be found"
+  invited: "&aĐã gửi lời mời duo tới &e{friend} &8| &aHọ có {time}s để chấp nhận"
+  include: "&eyou have to join a queue first!"
+  advevent: "&fBạn được &e{player} &fmời duo RTP! &7[&d&lClick để tham gia&7] &8- &e{time}s"
+  wait: "&eBạn phải đợi &f{time}s &enữa mới mời được!"
+  time-out: "⏰ &cLời mời duo đã hết hạn!"
+  cooldown: "&cBạn đang cooldown &e{time}s!"
+  duo-teleported: "&a&lDUO! &7Bạn và &e{partners} &7đã tele cùng nhau tại &e{world} &8| &bRynixRtpq"
+  queue-full: "&cHàng đợi đầy! Max {max}"
+  damaged-cancel: "&cBạn bị tấn công nên đã rời khỏi hàng đợi duo!"
+
+settings:
+  debug: false
+  prefix: "&8[&bRynixRtpq&8] &f"
+  folia-check-on-startup: true
+  prefix-raw: "[RynixRtpq] "
+
+# Legacy for our previous config - auto converted
+rtp:
+  default-world: world
+  invulnerability:
+    enabled: true
+    seconds: 5
+
+cooldown:
+  enabled: true
+  time-seconds: 300
+
+gui:
+  title: "&8● &bRynixRtpq &8| &dDUO Queue &8●"
+  size: 27
+  refresh-ticks: 20
+  sound-enabled: true
+  filler-enabled: true
+  filler-material: BLACK_STAINED_GLASS_PANE
+
+sound:
+  command:
+    name: UI_LOOM_SELECT_PATTERN
+    volume: 1.0
+    pitch: 1.0
+  join:
+    name: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  leave:
+    name: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  teleport:
+    name: ENTITY_ENDERMAN_TELEPORT
+    volume: 1.0
+    pitch: 1.0
+  success:
+    name: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  time:
+    name: BLOCK_NOTE_BLOCK_PLING
+    volume: 1.0
+    pitch: 1.0
+  click:
+    name: UI_BUTTON_CLICK
+    volume: 1.0
+    pitch: 1.0
+  break:
+    name: ITEM_SHIELD_BREAK
+    volume: 1.0
+    pitch: 1.0
